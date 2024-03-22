@@ -7,7 +7,7 @@ const cors = require("cors");
 
 app.use(
   cors({
-    origin: ["https://partify.vercel.app"],
+    origin: ["https://organizi-tn.vercel.app"],
     credentials: true,
   })
 );
