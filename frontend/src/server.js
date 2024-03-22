@@ -1,1 +1,1 @@
-export const server = " https://partify-server.vercel.app/api/v2";
+export const server = "https://organizi.vercel.app/api/v2";
