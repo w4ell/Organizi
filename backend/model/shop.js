@@ -7,9 +7,12 @@ const shopSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please enter your shop name!"],
   },
+  phoneNumber: {
+    type: Number,
+    required: [true, "Please enter your shop phone number!"],
+  },
   email: {
     type: String,
-    required: [true, "Please enter your shop email address"],
   },
   password: {
     type: String,
@@ -22,10 +25,6 @@ const shopSchema = new mongoose.Schema({
   },
   address: {
     type: String,
-    required: true,
-  },
-  phoneNumber: {
-    type: Number,
     required: true,
   },
   role: {

@@ -9,15 +9,16 @@ const cloudinary = require("cloudinary");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const ErrorHandler = require("../utils/ErrorHandler");
 const sendShopToken = require("../utils/shopToken");
+const { send } = require("process");
 
 // create shop
 router.post(
   "/create-shop",
   catchAsyncErrors(async (req, res, next) => {
     try {
-      const { email } = req.body;
-      const sellerEmail = await Shop.findOne({ email });
-      if (sellerEmail) {
+      const { phoneNumber } = req.body;
+      const sellerPhone = await Shop.findOne({ phoneNumber });
+      if (sellerPhone) {
         return next(new ErrorHandler("User already exists", 400));
       }
       const avatar = req.body.avatar;
@@ -32,17 +33,30 @@ router.post(
         publicID = myCloud.public_id;
         URL = myCloud.secure_url;
       }
-
-      const seller = {
+      const seller = await Shop.create({
         name: req.body.name,
-        email: email,
+        email: req.body.email,
+        phoneNumber: phoneNumber,
         password: req.body.password,
         avatar: {
           public_id: publicID,
           url: URL,
         },
         address: req.body.address,
-        phoneNumber: req.body.phoneNumber,
+        zipCode: req.body.zipCode,
+      });
+      sendShopToken(seller, 201, res);
+      {
+        /* const seller = {
+        name: req.body.name,
+        email: req.body.email,
+        phoneNumber: phoneNumber,
+        password: req.body.password,
+        avatar: {
+          public_id: publicID,
+          url: URL,
+        },
+        address: req.body.address,
         zipCode: req.body.zipCode,
       };
 
@@ -62,6 +76,7 @@ router.post(
         });
       } catch (error) {
         return next(new ErrorHandler(error.message, 500));
+      }*/
       }
     } catch (error) {
       return next(new ErrorHandler(error.message, 400));
@@ -122,13 +137,13 @@ router.post(
   "/login-shop",
   catchAsyncErrors(async (req, res, next) => {
     try {
-      const { email, password } = req.body;
+      const { phoneNumber, password } = req.body;
 
-      if (!email || !password) {
+      if (!phoneNumber || !password) {
         return next(new ErrorHandler("Please provide the all fields!", 400));
       }
 
-      const user = await Shop.findOne({ email }).select("+password");
+      const user = await Shop.findOne({ phoneNumber }).select("+password");
 
       if (!user) {
         return next(new ErrorHandler("User doesn't exists!", 400));
@@ -307,6 +322,11 @@ router.delete(
         return next(
           new ErrorHandler("Seller is not available with this id", 400)
         );
+      }
+
+      const imageId = seller.avatar.public_id;
+      if (imageId !== "avatars/ekkgbxfx9sv6mhr0cohj") {
+        await cloudinary.v2.uploader.destroy(imageId);
       }
 
       await Shop.findByIdAndDelete(req.params.id);

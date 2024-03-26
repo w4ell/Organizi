@@ -12,15 +12,14 @@ const { isAuthenticated, isAdmin } = require("../middleware/auth");
 // create user
 router.post("/create-user", async (req, res, next) => {
   try {
-    const { name, email, password, avatar } = req.body;
-    const userEmail = await User.findOne({ email });
-
-    if (userEmail) {
+    const { name, phoneNumber, email, password, avatar } = req.body;
+    const userNumber = await User.findOne({ phoneNumber });
+    if (userNumber) {
       return next(new ErrorHandler("User already exists", 400));
     }
     let publicID = "avatars/boeihe2ic77rhj3iyz8f";
     let URL =
-      "https://res.cloudinary.com/doyccemfo/image/upload/v1707660819/avatars/boeihe2ic77rhj3iyz8f.png";
+      "https://res.cloudinary.com/doyccemfo/image/upload/v1711461687/avatars/dngbjqfdmqlakpxc9wzz.png";
 
     if (avatar) {
       const myCloud = await cloudinary.v2.uploader.upload(avatar, {
@@ -29,10 +28,22 @@ router.post("/create-user", async (req, res, next) => {
       publicID = myCloud.public_id;
       URL = myCloud.secure_url;
     }
-
-    const user = {
+    const user = await User.create({
       name: name,
       email: email,
+      phoneNumber: phoneNumber,
+      password: password,
+      avatar: {
+        public_id: publicID,
+        url: URL,
+      },
+    });
+    sendToken(user, 201, res);
+    {
+      /*const user = {
+      name: name,
+      email: email,
+      phoneNumber: phoneNumber,
       password: password,
       avatar: {
         public_id: publicID,
@@ -56,6 +67,7 @@ router.post("/create-user", async (req, res, next) => {
       });
     } catch (error) {
       return next(new ErrorHandler(error.message, 500));
+    }*/
     }
   } catch (error) {
     return next(new ErrorHandler(error.message, 400));
@@ -110,13 +122,13 @@ router.post(
   "/login-user",
   catchAsyncErrors(async (req, res, next) => {
     try {
-      const { email, password } = req.body;
+      const { phoneNumber, password } = req.body;
 
-      if (!email || !password) {
+      if (!phoneNumber || !password) {
         return next(new ErrorHandler("Please provide the all fields!", 400));
       }
 
-      const user = await User.findOne({ email }).select("+password");
+      const user = await User.findOne({ phoneNumber }).select("+password");
 
       if (!user) {
         return next(new ErrorHandler("User doesn't exists!", 400));
@@ -406,8 +418,9 @@ router.delete(
       }
 
       const imageId = user.avatar.public_id;
-
-      await cloudinary.v2.uploader.destroy(imageId);
+      if (imageId !== "avatars/dngbjqfdmqlakpxc9wzz") {
+        await cloudinary.v2.uploader.destroy(imageId);
+      }
 
       await User.findByIdAndDelete(req.params.id);
 
