@@ -265,6 +265,13 @@ export const categoriesData = [
   },
   {
     id: 11,
+    title: "Voyages",
+    subTitle: "",
+    image_Url:
+      "https://cdn-icons-png.freepik.com/512/7079/7079369.png?ga=GA1.1.530332020.1705582138&",
+  },
+  {
+    id: 12,
     title: "Autres",
     subTitle: "",
     image_Url:

@@ -331,6 +331,11 @@ border-radius: 0.5rem !important; border-width: 2px !important;
     bottom: 0;
   }
 }
+@media (max-width: 640px) {
+  .carousel .slide img {
+    min-height: 95vh;  
+  }
+}
 .carousel .control-dots .dot {
   -webkit-transition: opacity 0.25s ease-in;
   -moz-transition: opacity 0.25s ease-in;
