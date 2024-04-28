@@ -68,7 +68,7 @@ const Hero = () => {
               Rendez vos événements spéciaux <br /> inoubliables avec notre
               plateforme
             </h1>
-            <p className="pt-2 mb-0 md:mb-40 text-[12px] 800px:text-[25px] font-[Poppins] font-[400] text-[black] hidden sm:block">
+            <p className="pt-2 text-[12px] 800px:text-[25px] font-[Poppins] font-[400] text-[black] hidden sm:block">
               Créez des souvenirs magiques avec notre sélection exclusive de
               services pour tous vos événements heureux.
             </p>
