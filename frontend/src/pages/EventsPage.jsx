@@ -12,7 +12,7 @@ const EventsPage = () => {
         <Loader />
       ) : (
         <div>
-          <Header activeHeading={5} />
+          <Header activeHeading={3} />
           {allEvents?.length === 0
             ? "Aucun événement pour l'instant!"
             : allEvents.map((item) => <EventCard key={item._id} data={item} />)}

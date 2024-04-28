@@ -17,8 +17,6 @@ const BestDeals = () => {
     autoplay: true,
     autoplaySpeed: 2000,
     pauseOnHover: true,
-    nextArrow: <FaArrowCircleRight />,
-    prevArrow: <FaArrowCircleLeft />,
     responsive: [
       {
         breakpoint: 1024,

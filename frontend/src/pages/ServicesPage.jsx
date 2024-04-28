@@ -34,10 +34,7 @@ const ProductsPage = () => {
       const hasBookedDate = selectedDates.some((date) =>
         product.bookedDates.includes(date)
       );
-      const isServiceType = product.type === "Service";
-      return (
-        isServiceType && matchesCategory && matchesLocation && !hasBookedDate
-      );
+      return matchesCategory && matchesLocation && !hasBookedDate;
     });
     setData(filteredData || []);
   }, [allProducts, categoryData, selectedLocation, selectedDates]);
@@ -68,7 +65,7 @@ const ProductsPage = () => {
         <Loader />
       ) : (
         <div>
-          <Header activeHeading={3} />
+          <Header activeHeading={2} />
           <br />
           <br />
           <div className="flex flex-col items-center">
