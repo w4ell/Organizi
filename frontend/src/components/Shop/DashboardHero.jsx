@@ -37,8 +37,8 @@ const DashboardHero = () => {
       },
     },
     {
-      field: "itemsQty",
-      headerName: "Articles Qty",
+      field: "createdAt",
+      headerName: "Date Commande",
       type: "number",
       minWidth: 130,
       flex: 0.7,
@@ -79,7 +79,7 @@ const DashboardHero = () => {
     orders.forEach((item) => {
       row.push({
         id: item._id,
-        itemsQty: item.cart.reduce((acc, item) => acc + item.qty, 0),
+        createdAt: item.createdAt,
         total: item.totalPrice + "TND ",
         status: item.status,
       });
