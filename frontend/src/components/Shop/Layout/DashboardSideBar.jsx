@@ -116,26 +116,6 @@ const DashboardSideBar = ({ active }) => {
           </h5>
         </Link>
       </div>
-
-      <div className="w-full flex items-center p-4">
-        <Link
-          to="/dashboard-withdraw-money"
-          className="w-full flex items-center"
-        >
-          <MdOutlineAttachMoney
-            size={30}
-            color={`${active === 7 ? "crimson" : "#555"}`}
-          />
-          <h5
-            className={`hidden 800px:block pl-2 text-[18px] font-[400] ${
-              active === 7 ? "text-[crimson]" : "text-[#555]"
-            }`}
-          >
-            Retirer de l'argent
-          </h5>
-        </Link>
-      </div>
-
       <div className="w-full flex items-center p-4">
         <Link to="/dashboard-messages" className="w-full flex items-center">
           <BiMessageSquareDetail
@@ -148,22 +128,6 @@ const DashboardSideBar = ({ active }) => {
             }`}
           >
             Boîte de réception
-          </h5>
-        </Link>
-      </div>
-
-      <div className="w-full flex items-center p-4">
-        <Link to="/dashboard-coupouns" className="w-full flex items-center">
-          <AiOutlineGift
-            size={30}
-            color={`${active === 9 ? "crimson" : "#555"}`}
-          />
-          <h5
-            className={`hidden 800px:block pl-2 text-[18px] font-[400] ${
-              active === 9 ? "text-[crimson]" : "text-[#555]"
-            }`}
-          >
-            Codes de réduction
           </h5>
         </Link>
       </div>
