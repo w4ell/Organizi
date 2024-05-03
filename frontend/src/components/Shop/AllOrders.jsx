@@ -32,9 +32,9 @@ const AllOrders = () => {
       },
     },
     {
-      field: "itemsQty",
-      headerName: "Articles Qty",
-      type: "number",
+      field: "createdAt",
+      headerName: "Date Commande",
+      type: "text",
       minWidth: 130,
       flex: 0.7,
     },
@@ -74,7 +74,7 @@ const AllOrders = () => {
     orders.forEach((item) => {
       row.push({
         id: item._id,
-        itemsQty: item.cart.length,
+        createdAt: item.createdAt,
         total: item.totalPrice !== 0 ? item.totalPrice + " TND" : "-",
         status: item.status,
       });
