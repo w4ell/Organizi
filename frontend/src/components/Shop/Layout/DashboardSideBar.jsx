@@ -7,8 +7,9 @@ import { VscNewFile } from "react-icons/vsc";
 import { CiSettings } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import { BiMessageSquareDetail } from "react-icons/bi";
-import { server } from "../../server";
+import { server } from "../../../server";
 import axios from "axios";
+import styles from "../../../styles/styles";
 
 const DashboardSideBar = ({ active }) => {
   const logoutHandler = async () => {
