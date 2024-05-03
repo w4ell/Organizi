@@ -29,13 +29,6 @@ const ShopInfo = ({ isOwner }) => {
       });
   }, []);
 
-  const logoutHandler = async () => {
-    axios.get(`${server}/shop/logout`, {
-      withCredentials: true,
-    });
-    window.location.reload();
-  };
-
   const totalReviewsLength =
     products &&
     products.reduce((acc, product) => acc + product.reviews.length, 0);
@@ -100,12 +93,6 @@ const ShopInfo = ({ isOwner }) => {
                   <span className="text-white">Modifier</span>
                 </div>
               </Link>
-              <div
-                className={`${styles.button} !w-full !h-[42px] !rounded-[5px]`}
-                onClick={logoutHandler}
-              >
-                <span className="text-white">Se déconnecter</span>
-              </div>
             </div>
           )}
         </div>

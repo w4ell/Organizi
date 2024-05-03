@@ -7,8 +7,17 @@ import { VscNewFile } from "react-icons/vsc";
 import { CiSettings } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import { BiMessageSquareDetail } from "react-icons/bi";
+import { server } from "../../server";
+import axios from "axios";
 
 const DashboardSideBar = ({ active }) => {
+  const logoutHandler = async () => {
+    axios.get(`${server}/shop/logout`, {
+      withCredentials: true,
+    });
+    window.location.reload();
+  };
+
   return (
     <div className="w-full h-[90vh] bg-white shadow-sm overflow-y-scroll sticky top-0 left-0 z-10">
       {/* single item */}
@@ -173,6 +182,12 @@ const DashboardSideBar = ({ active }) => {
             Paramètres
           </h5>
         </Link>
+      </div>
+      <div
+        className={`${styles.button} !w-full !h-[42px] !rounded-[5px]`}
+        onClick={logoutHandler}
+      >
+        <span className="text-white">Se déconnecter</span>
       </div>
     </div>
   );
