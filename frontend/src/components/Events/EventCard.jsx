@@ -40,6 +40,8 @@ const EventCard = ({ active, data }) => {
       <div className="w-full lg:[w-50%] flex flex-col justify-center">
         <h2 className={`${styles.productTitle}`}>{data?.name}</h2>
         <p>{data?.description}</p>
+        <br />
+        <p className="font-semibold text-lg">{data?.location}</p>
         <div className="flex py-2 justify-between">
           <div className="flex">
             <h5 className="font-bold text-[20px] text-[#333] font-Roboto">

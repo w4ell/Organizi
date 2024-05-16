@@ -79,7 +79,7 @@ const DashboardHero = () => {
     orders.forEach((item) => {
       row.push({
         id: item._id,
-        createdAt: item.createdAt,
+        createdAt: item.createdAt.toString().slice(0, 10),
         total: item.totalPrice + "TND ",
         status: item.status,
       });
