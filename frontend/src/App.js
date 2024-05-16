@@ -8,6 +8,7 @@ import {
   EventsPage,
   FAQPage,
   CheckoutPage,
+  PaymentPage,
   OrderSuccessPage,
   ProductDetailsPage,
   ProfilePage,
@@ -83,6 +84,14 @@ const App = () => {
           element={
             <ProtectedRoute>
               <CheckoutPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/payment"
+          element={
+            <ProtectedRoute>
+              <PaymentPage />
             </ProtectedRoute>
           }
         />

@@ -18,11 +18,11 @@ const AllOrders = () => {
   }, [dispatch]);
 
   const columns = [
-    { field: "id", headerName: "Commande ID", minWidth: 150, flex: 0.7 },
+    { field: "id", headerName: "ID", minWidth: 150, flex: 0.7 },
 
     {
       field: "status",
-      headerName: "Statut",
+      headerName: "Etat",
       minWidth: 130,
       flex: 0.7,
       cellClassName: (params) => {

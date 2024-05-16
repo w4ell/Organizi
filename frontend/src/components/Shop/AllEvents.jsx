@@ -22,19 +22,19 @@ const AllEvents = () => {
   const handleDelete = (id) => {
     dispatch(deleteEvent(id));
     window.location.reload();
-  }
+  };
 
   const columns = [
-    { field: "id", headerName: "Product Id", minWidth: 150, flex: 0.7 },
+    { field: "id", headerName: "Id", minWidth: 150, flex: 0.7 },
     {
       field: "name",
-      headerName: "Name",
+      headerName: "Nom",
       minWidth: 180,
       flex: 1.4,
     },
     {
       field: "price",
-      headerName: "Price",
+      headerName: "Prix",
       minWidth: 100,
       flex: 0.6,
     },
@@ -48,7 +48,7 @@ const AllEvents = () => {
 
     {
       field: "sold",
-      headerName: "Sold out",
+      headerName: "Nombre de ventes",
       type: "number",
       minWidth: 130,
       flex: 0.6,
@@ -84,9 +84,7 @@ const AllEvents = () => {
       renderCell: (params) => {
         return (
           <>
-            <Button
-            onClick={() => handleDelete(params.id)}
-            >
+            <Button onClick={() => handleDelete(params.id)}>
               <AiOutlineDelete size={20} />
             </Button>
           </>
@@ -98,11 +96,11 @@ const AllEvents = () => {
   const row = [];
 
   events &&
-  events.forEach((item) => {
+    events.forEach((item) => {
       row.push({
         id: item._id,
         name: item.name,
-        price: "US$ " + item.discountPrice,
+        price: item.discountPrice + "TND ",
         Stock: item.stock,
         sold: item.sold_out,
       });

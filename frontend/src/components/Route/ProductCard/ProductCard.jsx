@@ -1,20 +1,12 @@
 import React, { useState } from "react";
-import {
-  AiFillHeart,
-  AiOutlineEye,
-  AiOutlineHeart,
-  AiOutlineStar,
-} from "react-icons/ai";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import styles from "../../../styles/styles";
 import { useDispatch, useSelector } from "react-redux";
-import ProductDetailsCard from "../ProductDetailsCard/ProductDetailsCard";
 import {
   addToWishlist,
   removeFromWishlist,
 } from "../../../redux/actions/wishlist";
 import { useEffect } from "react";
-import { toast } from "react-toastify";
 import Ratings from "../../Products/Ratings";
 import Slider from "react-slick";
 

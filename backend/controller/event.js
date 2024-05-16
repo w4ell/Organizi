@@ -87,22 +87,19 @@ router.get(
 
 // delete event of a shop
 router.delete(
-  "/delete-shop-event/:id",
+  "/delete-event/:id",
   catchAsyncErrors(async (req, res, next) => {
     try {
       const event = await Event.findById(req.params.id);
-
-      if (!product) {
+      if (!event) {
         return next(new ErrorHandler("Product is not found with this id", 404));
       }
 
-      for (let i = 0; 1 < product.images.length; i++) {
-        const result = await cloudinary.v2.uploader.destroy(
-          event.images[i].public_id
-        );
+      for (let i = 0; 1 < event.images.length; i++) {
+        await cloudinary.v2.uploader.destroy(event.images[i].public_id);
       }
 
-      await event.remove();
+      await Event.findByIdAndRemove(req.params.id);
 
       res.status(201).json({
         success: true,

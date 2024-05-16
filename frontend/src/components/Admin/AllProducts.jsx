@@ -15,22 +15,24 @@ const AllProducts = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get(`${server}/product/admin-all-products`, {withCredentials: true}).then((res) => {
+    axios
+      .get(`${server}/product/admin-all-products`, { withCredentials: true })
+      .then((res) => {
         setData(res.data.products);
-    })
+      });
   }, []);
 
   const columns = [
-    { field: "id", headerName: "Product Id", minWidth: 150, flex: 0.7 },
+    { field: "id", headerName: "Id", minWidth: 150, flex: 0.7 },
     {
       field: "name",
-      headerName: "Name",
+      headerName: "Nom",
       minWidth: 180,
       flex: 1.4,
     },
     {
       field: "price",
-      headerName: "Price",
+      headerName: "Prix",
       minWidth: 100,
       flex: 0.6,
     },
@@ -44,7 +46,7 @@ const AllProducts = () => {
 
     {
       field: "sold",
-      headerName: "Sold out",
+      headerName: "Nombre de ventes",
       type: "number",
       minWidth: 130,
       flex: 0.6,
@@ -73,11 +75,11 @@ const AllProducts = () => {
   const row = [];
 
   data &&
-  data.forEach((item) => {
+    data.forEach((item) => {
       row.push({
         id: item._id,
         name: item.name,
-        price: "US$ " + item.discountPrice,
+        price: item.discountPrice + "TND ",
         Stock: item.stock,
         sold: item?.sold_out,
       });
@@ -85,15 +87,15 @@ const AllProducts = () => {
 
   return (
     <>
-        <div className="w-full mx-8 pt-1 mt-10 bg-white">
-          <DataGrid
-            rows={row}
-            columns={columns}
-            pageSize={10}
-            disableSelectionOnClick
-            autoHeight
-          />
-        </div>
+      <div className="w-full mx-8 pt-1 mt-10 bg-white">
+        <DataGrid
+          rows={row}
+          columns={columns}
+          pageSize={10}
+          disableSelectionOnClick
+          autoHeight
+        />
+      </div>
     </>
   );
 };

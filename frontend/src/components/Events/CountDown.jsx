@@ -4,21 +4,34 @@ import { server } from "../../server";
 
 const CountDown = ({ data }) => {
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setTimeLeft(calculateTimeLeft());
     }, 1000);
 
+    const deleteEvent = async () => {
+      try {
+        await axios.delete(`${server}/event/delete-event/${data?._id}`, {
+          withCredentials: true,
+        });
+        console.log("Event deleted successfully");
+      } catch (err) {
+        console.error("Error deleting event:", err);
+      }
+    };
+
     if (
-      typeof timeLeft.days === "undefined" &&
-      typeof timeLeft.hours === "undefined" &&
+      typeof timeLeft.jours === "undefined" &&
+      typeof timeLeft.heures === "undefined" &&
       typeof timeLeft.minutes === "undefined" &&
-      typeof timeLeft.seconds === "undefined"
+      typeof timeLeft.secondes === "undefined"
     ) {
-      axios.delete(`${server}/event/delete-shop-event/${data?._id}`);
+      deleteEvent();
     }
+
     return () => clearTimeout(timer);
-  });
+  }, [timeLeft, data, server]);
 
   function calculateTimeLeft() {
     const difference = +new Date(data?.Finish_Date) - +new Date();
@@ -26,10 +39,10 @@ const CountDown = ({ data }) => {
 
     if (difference > 0) {
       timeLeft = {
-        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        jours: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        heures: Math.floor((difference / (1000 * 60 * 60)) % 24),
         minutes: Math.floor((difference / 1000 / 60) % 60),
-        seconds: Math.floor((difference / 1000) % 60),
+        secondes: Math.floor((difference / 1000) % 60),
       };
     }
 
@@ -53,7 +66,7 @@ const CountDown = ({ data }) => {
       {timerComponents.length ? (
         timerComponents
       ) : (
-        <span className="text-[red] text-[25px]">Time's Up</span>
+        <span className="text-[red] text-[25px]">Evènement expiré</span>
       )}
     </div>
   );

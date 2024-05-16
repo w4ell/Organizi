@@ -360,13 +360,10 @@ const Address = () => {
 
   const addressTypeData = [
     {
-      name: "Default",
+      name: "Maison",
     },
     {
-      name: "Home",
-    },
-    {
-      name: "Office",
+      name: "Travail",
     },
   ];
 
@@ -414,13 +411,13 @@ const Address = () => {
               />
             </div>
             <h1 className="text-center text-[25px] font-Poppins">
-              Add New Address
+              Ajouter une nouvel addresse
             </h1>
             <div className="w-full">
               <form aria-required onSubmit={handleSubmit} className="w-full">
                 <div className="w-full block p-4">
                   <div className="w-full pb-2">
-                    <label className="block pb-2">Country</label>
+                    <label className="block pb-2">Pays</label>
                     <select
                       name=""
                       id=""
@@ -429,7 +426,7 @@ const Address = () => {
                       className="w-[95%] border h-[40px] rounded-[5px]"
                     >
                       <option value="" className="block border pb-2">
-                        choose your country
+                        choisir
                       </option>
                       {Country &&
                         Country.getAllCountries().map((item) => (
@@ -445,7 +442,7 @@ const Address = () => {
                   </div>
 
                   <div className="w-full pb-2">
-                    <label className="block pb-2">Choose your City</label>
+                    <label className="block pb-2">Choisir</label>
                     <select
                       name=""
                       id=""
@@ -454,7 +451,7 @@ const Address = () => {
                       className="w-[95%] border h-[40px] rounded-[5px]"
                     >
                       <option value="" className="block border pb-2">
-                        choose your city
+                        choisir
                       </option>
                       {State &&
                         State.getStatesOfCountry(country).map((item) => (
@@ -470,9 +467,9 @@ const Address = () => {
                   </div>
 
                   <div className="w-full pb-2">
-                    <label className="block pb-2">Address 1</label>
+                    <label className="block pb-2">Addresse 1</label>
                     <input
-                      type="address"
+                      type="text"
                       className={`${styles.input}`}
                       required
                       value={address1}
@@ -480,9 +477,9 @@ const Address = () => {
                     />
                   </div>
                   <div className="w-full pb-2">
-                    <label className="block pb-2">Address 2</label>
+                    <label className="block pb-2">Addresse 2</label>
                     <input
-                      type="address"
+                      type="text"
                       className={`${styles.input}`}
                       required
                       value={address2}
@@ -491,7 +488,7 @@ const Address = () => {
                   </div>
 
                   <div className="w-full pb-2">
-                    <label className="block pb-2">Zip Code</label>
+                    <label className="block pb-2">Code postale</label>
                     <input
                       type="number"
                       className={`${styles.input}`}
@@ -502,7 +499,7 @@ const Address = () => {
                   </div>
 
                   <div className="w-full pb-2">
-                    <label className="block pb-2">Address Type</label>
+                    <label className="block pb-2">Type d'addresse</label>
                     <select
                       name=""
                       id=""
@@ -511,7 +508,7 @@ const Address = () => {
                       className="w-[95%] border h-[40px] rounded-[5px]"
                     >
                       <option value="" className="block border pb-2">
-                        Choose your Address Type
+                        Choisir
                       </option>
                       {addressTypeData &&
                         addressTypeData.map((item) => (
@@ -532,6 +529,7 @@ const Address = () => {
                       className={`${styles.input} mt-5 cursor-pointer`}
                       required
                       readOnly
+                      value="Ajouter"
                     />
                   </div>
                 </div>
@@ -542,13 +540,13 @@ const Address = () => {
       )}
       <div className="flex w-full items-center justify-between">
         <h1 className="text-[25px] font-[600] text-[#000000ba] pb-2">
-          My Addresses
+          Mes adresses
         </h1>
         <div
           className={`${styles.button} !rounded-md`}
           onClick={() => setOpen(true)}
         >
-          <span className="text-[#fff]">Add New</span>
+          <span className="text-[#fff]">Ajouter</span>
         </div>
       </div>
       <br />
@@ -583,7 +581,7 @@ const Address = () => {
 
       {user && user.addresses.length === 0 && (
         <h5 className="text-center pt-8 text-[18px]">
-          You not have any saved address!
+          Tu n'as pas encore d'adresses!
         </h5>
       )}
     </div>
