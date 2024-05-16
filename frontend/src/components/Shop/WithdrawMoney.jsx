@@ -105,13 +105,13 @@ const WithdrawMoney = () => {
     <div className="w-full h-[90vh] p-8">
       <div className="w-full bg-white h-full rounded flex items-center justify-center flex-col">
         <h5 className="text-[20px] pb-4">
-          Available Balance: ${availableBalance}
+          Solde disponible: {availableBalance}TND
         </h5>
         <div
           className={`${styles.button} text-white !h-[42px] !rounded`}
           onClick={() => (availableBalance < 50 ? error() : setOpen(true))}
         >
-          Withdraw
+          Retirer
         </div>
       </div>
       {open && (
@@ -131,12 +131,12 @@ const WithdrawMoney = () => {
             {paymentMethod ? (
               <div>
                 <h3 className="text-[22px] font-Poppins text-center font-[600]">
-                  Add new Withdraw Method:
+                  Ajouter une methode de paiement:
                 </h3>
                 <form onSubmit={handleSubmit}>
                   <div>
                     <label>
-                      Bank Name <span className="text-red-500">*</span>
+                      Nom de la banque <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
@@ -153,7 +153,7 @@ const WithdrawMoney = () => {
                   </div>
                   <div className="pt-2">
                     <label>
-                      Bank Country <span className="text-red-500">*</span>
+                      Pays <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
@@ -173,7 +173,7 @@ const WithdrawMoney = () => {
                   </div>
                   <div className="pt-2">
                     <label>
-                      Bank Swift Code <span className="text-red-500">*</span>
+                      Swift Code <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
@@ -194,7 +194,7 @@ const WithdrawMoney = () => {
 
                   <div className="pt-2">
                     <label>
-                      Bank Account Number{" "}
+                      Numéro de compte
                       <span className="text-red-500">*</span>
                     </label>
                     <input
@@ -215,7 +215,7 @@ const WithdrawMoney = () => {
                   </div>
                   <div className="pt-2">
                     <label>
-                      Bank Holder Name <span className="text-red-500">*</span>
+                      Nom du titulaire <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
@@ -236,7 +236,8 @@ const WithdrawMoney = () => {
 
                   <div className="pt-2">
                     <label>
-                      Bank Address <span className="text-red-500">*</span>
+                      Adresse de la banque{" "}
+                      <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
@@ -259,14 +260,14 @@ const WithdrawMoney = () => {
                     type="submit"
                     className={`${styles.button} mb-3 text-white`}
                   >
-                    Add
+                    Ajouter
                   </button>
                 </form>
               </div>
             ) : (
               <>
                 <h3 className="text-[22px] font-Poppins">
-                  Available Withdraw Methods:
+                  Methodes de paiement:
                 </h3>
 
                 {seller && seller?.withdrawMethod ? (
@@ -274,13 +275,15 @@ const WithdrawMoney = () => {
                     <div className="800px:flex w-full justify-between items-center">
                       <div className="800px:w-[50%]">
                         <h5>
-                          Account Number:{" "}
+                          Numéro de compte:
                           {"*".repeat(
                             seller?.withdrawMethod.bankAccountNumber.length - 3
                           ) +
                             seller?.withdrawMethod.bankAccountNumber.slice(-3)}
                         </h5>
-                        <h5>Bank Name: {seller?.withdrawMethod.bankName}</h5>
+                        <h5>
+                          Nom de la banque: {seller?.withdrawMethod.bankName}
+                        </h5>
                       </div>
                       <div className="800px:w-[50%]">
                         <AiOutlineDelete
@@ -291,7 +294,7 @@ const WithdrawMoney = () => {
                       </div>
                     </div>
                     <br />
-                    <h4>Available Balance: {availableBalance}$</h4>
+                    <h4>Solde disponible: {availableBalance}TND</h4>
                     <br />
                     <div className="800px:flex w-full items-center">
                       <input
@@ -305,21 +308,21 @@ const WithdrawMoney = () => {
                         className={`${styles.button} !h-[42px] text-white`}
                         onClick={withdrawHandler}
                       >
-                        Withdraw
+                        Retirer
                       </div>
                     </div>
                   </div>
                 ) : (
                   <div>
                     <p className="text-[18px] pt-2">
-                      No Withdraw Methods available!
+                      Veuillez ajouter une methode de paiement
                     </p>
                     <div className="w-full flex items-center">
                       <div
                         className={`${styles.button} text-[#fff] text-[18px] mt-4`}
                         onClick={() => setPaymentMethod(true)}
                       >
-                        Add new
+                        Ajouter
                       </div>
                     </div>
                   </div>

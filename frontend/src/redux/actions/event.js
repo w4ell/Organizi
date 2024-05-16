@@ -6,11 +6,10 @@ export const createevent =
   (
     name,
     description,
-    category,
+    location,
     start_Date,
     Finish_Date,
     tags,
-    originalPrice,
     discountPrice,
     stock,
     shopId,
@@ -25,11 +24,10 @@ export const createevent =
         `${server}/event/create-event`,
         name,
         description,
-        category,
+        location,
         start_Date,
         Finish_Date,
         tags,
-        originalPrice,
         discountPrice,
         stock,
         shopId,
@@ -74,12 +72,9 @@ export const deleteEvent = (id) => async (dispatch) => {
       type: "deleteeventRequest",
     });
 
-    const { data } = await axios.delete(
-      `${server}/event/delete-shop-event/${id}`,
-      {
-        withCredentials: true,
-      }
-    );
+    const { data } = await axios.delete(`${server}/event/delete-event/${id}`, {
+      withCredentials: true,
+    });
 
     dispatch({
       type: "deleteeventSuccess",

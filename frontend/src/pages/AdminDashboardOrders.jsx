@@ -20,11 +20,11 @@ const AdminDashboardOrders = () => {
   }, []);
 
   const columns = [
-    { field: "id", headerName: "Commande ID", minWidth: 150, flex: 0.7 },
+    { field: "id", headerName: "ID", minWidth: 150, flex: 0.7 },
 
     {
       field: "status",
-      headerName: "Statut",
+      headerName: "Etat",
       minWidth: 130,
       flex: 0.7,
       cellClassName: (params) => {
@@ -36,7 +36,7 @@ const AdminDashboardOrders = () => {
     },
     {
       field: "itemsQty",
-      headerName: "Items Qty",
+      headerName: "Quantité",
       type: "number",
       minWidth: 130,
       flex: 0.7,
@@ -51,7 +51,7 @@ const AdminDashboardOrders = () => {
     },
     {
       field: "createdAt",
-      headerName: "Order Date",
+      headerName: "Date",
       type: "number",
       minWidth: 130,
       flex: 0.8,
@@ -78,16 +78,27 @@ const AdminDashboardOrders = () => {
   ];
 
   const row = [];
-  adminOrders &&
-    adminOrders.forEach((item) => {
+  if (adminOrders) {
+    // Convert the createdAt to Date objects and sort
+    const sortedOrders = adminOrders
+      .map((order) => ({
+        ...order,
+        createdAt: new Date(order.createdAt),
+      }))
+      .sort((a, b) => b.createdAt - a.createdAt); // Sort in descending order
+
+    // Process the sorted orders to create the row data
+    sortedOrders.forEach((item) => {
       row.push({
         id: item._id,
         itemsQty: item?.cart?.reduce((acc, item) => acc + item.qty, 0),
-        total: item?.totalPrice + " $",
+        total: item?.totalPrice + " TND",
         status: item?.status,
-        createdAt: item?.createdAt.slice(0, 10),
+        createdAt: item?.createdAt.toISOString().slice(0, 10), // Format date back to YYYY-MM-DD
       });
     });
+  }
+
   return (
     <div>
       <AdminHeader />
@@ -102,7 +113,7 @@ const AdminDashboardOrders = () => {
               <DataGrid
                 rows={row}
                 columns={columns}
-                pageSize={4}
+                pageSize={10}
                 disableSelectionOnClick
                 autoHeight
               />

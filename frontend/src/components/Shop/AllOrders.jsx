@@ -18,11 +18,11 @@ const AllOrders = () => {
   }, [dispatch]);
 
   const columns = [
-    { field: "id", headerName: "Commande ID", minWidth: 150, flex: 0.7 },
+    { field: "id", headerName: "ID", minWidth: 150, flex: 0.7 },
 
     {
       field: "status",
-      headerName: "Statut",
+      headerName: "Etat",
       minWidth: 130,
       flex: 0.7,
       cellClassName: (params) => {
@@ -74,7 +74,7 @@ const AllOrders = () => {
     orders.forEach((item) => {
       row.push({
         id: item._id,
-        createdAt: item.createdAt,
+        createdAt: item.createdAt.toString().slice(0, 10),
         total: item.totalPrice !== 0 ? item.totalPrice + " TND" : "-",
         status: item.status,
       });

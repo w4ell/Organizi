@@ -7,7 +7,7 @@ const cors = require("cors");
 
 app.use(
   cors({
-    origin: ["https://organizi-tn.vercel.app"],
+    origin: ["http://localhost:3000"],
     credentials: true,
   })
 );

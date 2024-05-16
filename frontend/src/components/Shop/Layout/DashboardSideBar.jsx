@@ -10,7 +10,6 @@ import { BiMessageSquareDetail } from "react-icons/bi";
 import { server } from "../../../server";
 import axios from "axios";
 import styles from "../../../styles/styles";
-
 const DashboardSideBar = ({ active }) => {
   const logoutHandler = async () => {
     axios.get(`${server}/shop/logout`, {

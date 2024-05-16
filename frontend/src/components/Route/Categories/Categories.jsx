@@ -6,7 +6,14 @@ import styles from "../../../styles/styles";
 const Categories = () => {
   const navigate = useNavigate();
   const handleSubmit = (title) => {
-    navigate(`/products?category=${title}`);
+    const searchParams = {
+      location: "",
+      dates: "",
+      category: title,
+    };
+    const queryString = new URLSearchParams(searchParams).toString();
+
+    navigate(`/offres?${queryString}`);
   };
   return (
     <>

@@ -46,7 +46,7 @@ const Hero = () => {
     };
     const queryString = new URLSearchParams(searchParams).toString();
 
-    return `/services?${queryString}`;
+    return `/offres?${queryString}`;
   };
   return (
     <Carousel

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { categoriesData } from "../../static/data";
 import { toast } from "react-toastify";
 import { createevent } from "../../redux/actions/event";
 
@@ -15,9 +14,8 @@ const CreateEvent = () => {
   const [images, setImages] = useState([]);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [category, setCategory] = useState("");
   const [tags, setTags] = useState("");
-  const [originalPrice, setOriginalPrice] = useState(0);
+  const [location, setLocation] = useState("");
   const [discountPrice, setDiscountPrice] = useState(0);
   const [stock, setStock] = useState(0);
   const [startDate, setStartDate] = useState(null);
@@ -82,9 +80,8 @@ const CreateEvent = () => {
     const data = {
       name,
       description,
-      category,
       tags,
-      originalPrice,
+      location,
       discountPrice,
       stock,
       images,
@@ -97,13 +94,15 @@ const CreateEvent = () => {
 
   return (
     <div className="w-[90%] 800px:w-[50%] bg-white  shadow h-[80vh] rounded-[4px] p-3 overflow-y-scroll">
-      <h5 className="text-[30px] font-Poppins text-center">Create Event</h5>
+      <h5 className="text-[30px] font-Poppins text-center">
+        Créer un évenement
+      </h5>
       {/* create event form */}
       <form onSubmit={handleSubmit}>
         <br />
         <div>
           <label className="pb-2">
-            Name <span className="text-red-500">*</span>
+            Nom <span className="text-red-500">*</span>
           </label>
           <input
             type="text"
@@ -111,13 +110,13 @@ const CreateEvent = () => {
             value={name}
             className="mt-2 appearance-none block w-full px-3 h-[35px] border border-gray-300 rounded-[3px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             onChange={(e) => setName(e.target.value)}
-            placeholder="Enter your event product name..."
+            placeholder=""
           />
         </div>
         <br />
         <div>
           <label className="pb-2">
-            Description <span className="text-red-500">*</span>
+            Déscription <span className="text-red-500">*</span>
           </label>
           <textarea
             cols="30"
@@ -128,28 +127,10 @@ const CreateEvent = () => {
             value={description}
             className="mt-2 appearance-none block w-full pt-2 px-3 border border-gray-300 rounded-[3px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             onChange={(e) => setDescription(e.target.value)}
-            placeholder="Enter your event product description..."
+            placeholder=""
           ></textarea>
         </div>
         <br />
-        <div>
-          <label className="pb-2">
-            Category <span className="text-red-500">*</span>
-          </label>
-          <select
-            className="w-full mt-2 border h-[35px] rounded-[5px]"
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-          >
-            <option value="Choose a category">Choose a category</option>
-            {categoriesData &&
-              categoriesData.map((i) => (
-                <option value={i.title} key={i.title}>
-                  {i.title}
-                </option>
-              ))}
-          </select>
-        </div>
         <br />
         <div>
           <label className="pb-2">Tags</label>
@@ -159,25 +140,50 @@ const CreateEvent = () => {
             value={tags}
             className="mt-2 appearance-none block w-full px-3 h-[35px] border border-gray-300 rounded-[3px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             onChange={(e) => setTags(e.target.value)}
-            placeholder="Enter your event product tags..."
-          />
-        </div>
-        <br />
-        <div>
-          <label className="pb-2">Original Price</label>
-          <input
-            type="number"
-            name="price"
-            value={originalPrice}
-            className="mt-2 appearance-none block w-full px-3 h-[35px] border border-gray-300 rounded-[3px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-            onChange={(e) => setOriginalPrice(e.target.value)}
-            placeholder="Enter your event product price..."
+            placeholder=""
           />
         </div>
         <br />
         <div>
           <label className="pb-2">
-            Price (With Discount) <span className="text-red-500">*</span>
+            Ville <span className="text-red-500">*</span>
+          </label>
+          <select
+            id="cities"
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
+          >
+            <option value="">Sélectionner la ville</option>
+            <option value="Tunis">Tunis</option>
+            <option value="Sfax">Sfax</option>
+            <option value="Sousse">Sousse</option>
+            <option value="Kairouan">Kairouan</option>
+            <option value="Bizerte">Bizerte</option>
+            <option value="Gabès">Gabès</option>
+            <option value="Ariana">Ariana</option>
+            <option value="Gafsa">Gafsa</option>
+            <option value="La Marsa">La Marsa</option>
+            <option value="Kasserine">Kasserine</option>
+            <option value="Ben Arous">Ben Arous</option>
+            <option value="Monastir">Monastir</option>
+            <option value="Médenine">Médenine</option>
+            <option value="Nabeul">Nabeul</option>
+            <option value="Tataouine">Tataouine</option>
+            <option value="Hammamet">Hammamet</option>
+            <option value="Douz">Douz</option>
+            <option value="Mahdia">Mahdia</option>
+            <option value="El Kef">El Kef</option>
+            <option value="Beja">Beja</option>
+            <option value="Le Kram">Le Kram</option>
+            <option value="Rades">Rades</option>
+            <option value="Jendouba">Jendouba</option>
+            <option value="Tozeur">Tozeur</option>
+          </select>
+        </div>
+        <br />
+        <div>
+          <label className="pb-2">
+            Prix <span className="text-red-500">*</span>
           </label>
           <input
             type="number"
@@ -191,7 +197,7 @@ const CreateEvent = () => {
         <br />
         <div>
           <label className="pb-2">
-            Product Stock <span className="text-red-500">*</span>
+            Nombres des places <span className="text-red-500">*</span>
           </label>
           <input
             type="number"
@@ -205,7 +211,7 @@ const CreateEvent = () => {
         <br />
         <div>
           <label className="pb-2">
-            Event Start Date <span className="text-red-500">*</span>
+            Date début <span className="text-red-500">*</span>
           </label>
           <input
             type="date"
@@ -220,7 +226,7 @@ const CreateEvent = () => {
         <br />
         <div>
           <label className="pb-2">
-            Event End Date <span className="text-red-500">*</span>
+            Date fini <span className="text-red-500">*</span>
           </label>
           <input
             type="date"
@@ -235,7 +241,7 @@ const CreateEvent = () => {
         <br />
         <div>
           <label className="pb-2">
-            Upload Images <span className="text-red-500">*</span>
+            Images <span className="text-red-500">*</span>
           </label>
           <input
             type="file"
@@ -263,7 +269,7 @@ const CreateEvent = () => {
           <div>
             <input
               type="submit"
-              value="Create"
+              value="Créer"
               className="mt-2 cursor-pointer appearance-none text-center block w-full px-3 h-[35px] border border-gray-300 rounded-[3px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             />
           </div>
