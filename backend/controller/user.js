@@ -421,4 +421,24 @@ router.delete(
   })
 );
 
+// contact form
+router.post(
+  "/contact",
+  catchAsyncErrors(async (req, res, next) => {
+    try {
+      const { name, email, message } = req.body;
+      await sendMail({
+        email: "waelbm2005@gmail.com",
+        subject: "Nouveau message Organizi",
+        message: `Ce message a été envoyé par ${name} avec l'adresse ${email} avec le message suivant : ${message}`,
+      });
+      res.status(201).json({
+        success: true,
+        message: `Merci votre message a été envoyé`,
+      });
+    } catch (error) {
+      return next(new ErrorHandler(error.message, 500));
+    }
+  })
+);
 module.exports = router;

@@ -6,7 +6,7 @@ import {
   HomePage,
   ServicesPage,
   EventsPage,
-  FAQPage,
+  Contact,
   CheckoutPage,
   PaymentPage,
   OrderSuccessPage,
@@ -51,8 +51,6 @@ import { ShopHomePage } from "./ShopRoutes.js";
 import SellerProtectedRoute from "./routes/SellerProtectedRoute";
 import { getAllProducts } from "./redux/actions/product";
 import { getAllEvents } from "./redux/actions/event";
-import axios from "axios";
-import { server } from "./server";
 
 const App = () => {
   useEffect(() => {
@@ -78,7 +76,7 @@ const App = () => {
         <Route path="/offres" element={<ServicesPage />} />
         <Route path="/product/:id" element={<ProductDetailsPage />} />
         <Route path="/events" element={<EventsPage />} />
-        <Route path="/contact" element={<FAQPage />} />
+        <Route path="/contact" element={<Contact />} />
         <Route
           path="/checkout"
           element={
