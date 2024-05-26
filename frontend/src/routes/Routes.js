@@ -4,7 +4,7 @@ import ActivationPage from "../pages/ActivationPage";
 import HomePage from "../pages/HomePage";
 import ServicesPage from "../pages/ServicesPage";
 import EventsPage from "../pages/EventsPage";
-import FAQPage from "../pages/FAQPage";
+import Contact from "../pages/Contact";
 import CheckoutPage from "../pages/CheckoutPage";
 import PaymentPage from "../pages/PaymentPage";
 import OrderSuccessPage from "../pages/OrderSuccessPage";
@@ -23,7 +23,7 @@ export {
   HomePage,
   ServicesPage,
   EventsPage,
-  FAQPage,
+  Contact,
   CheckoutPage,
   PaymentPage,
   OrderSuccessPage,
