@@ -41,7 +41,7 @@ const ContactForm = () => {
       <h2 className="text-3xl font-bold text-gray-900 mb-8">Contactez nous</h2>
       <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
         <div className="flex flex-col gap-2">
-          <label htmlFor="name">Nom</label>
+          <label>Nom</label>
           <input
             type="text"
             name="name"
@@ -52,7 +52,7 @@ const ContactForm = () => {
           />
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="email">Email</label>
+          <label>Email</label>
           <input
             type="email"
             name="email"
@@ -63,7 +63,7 @@ const ContactForm = () => {
           />
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="message">Message</label>
+          <label>Message</label>
           <textarea
             name="message"
             value={message}
