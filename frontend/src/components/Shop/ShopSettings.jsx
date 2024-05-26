@@ -88,7 +88,7 @@ const ShopSettings = () => {
                 className="hidden"
                 onChange={handleImage}
               />
-              <label htmlFor="image">
+              <label>
                 <AiOutlineCamera />
               </label>
             </div>

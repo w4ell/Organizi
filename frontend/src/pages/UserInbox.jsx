@@ -410,7 +410,7 @@ const SellerInbox = ({
             className="hidden"
             onChange={handleImageUpload}
           />
-          <label htmlFor="image">
+          <label>
             <TfiGallery className="cursor-pointer" size={20} />
           </label>
         </div>
@@ -424,7 +424,7 @@ const SellerInbox = ({
             className={`${styles.input}`}
           />
           <input type="submit" value="Send" className="hidden" id="send" />
-          <label htmlFor="send">
+          <label>
             <AiOutlineSend
               size={20}
               className="absolute right-4 top-5 cursor-pointer"

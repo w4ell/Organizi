@@ -252,7 +252,7 @@ const CreateEvent = () => {
             onChange={handleImageChange}
           />
           <div className="w-full flex items-center flex-wrap">
-            <label htmlFor="upload">
+            <label>
               <AiOutlinePlusCircle size={30} className="mt-3" color="#555" />
             </label>
             {images &&
