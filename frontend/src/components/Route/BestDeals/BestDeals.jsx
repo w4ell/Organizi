@@ -64,7 +64,13 @@ const BestDeals = () => {
           <h1 className="text-[#EE317F] ">Meilleures offres</h1>
         </div>
         <div className="w-full flex-col  flex sm:flex-row ">
-          <p className="w-full sm:w-1/2 ">dsqdqs</p>
+          <p className="w-full sm:w-1/2 ">
+            Découvrez nos meilleures offres : des réductions exclusives sur une
+            sélection de produits de qualité. Profitez de prix imbattables sur
+            nos articles phares, disponibles pour une durée limitée. Ne manquez
+            pas l'occasion de faire des économies tout en vous offrant le
+            meilleur.
+          </p>
           <div className="w-full sm:w-1/2">
             <Slider {...settings}>
               {data?.map((i) => (
