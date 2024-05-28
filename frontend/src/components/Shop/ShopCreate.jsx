@@ -26,12 +26,12 @@ const ShopCreate = () => {
     axios
       .post(`${server}/shop/create-shop`, {
         name,
+        phoneNumber,
         email,
         password,
         avatar,
         zipCode,
         address,
-        phoneNumber,
       })
       .then((res) => {
         toast.success(res.data.message);
@@ -41,7 +41,8 @@ const ShopCreate = () => {
         setAvatar();
         setZipCode();
         setAddress("");
-        setPhoneNumber();
+        setPhoneNumber("");
+        navigate("/auth/2");
       })
       .catch((error) => {
         toast.error(error.response.data.message);
@@ -74,10 +75,7 @@ const ShopCreate = () => {
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-700"
-              >
+              <label className="block text-sm font-medium text-gray-700">
                 Nom de la boutique
               </label>
               <div className="mt-1">
@@ -93,10 +91,7 @@ const ShopCreate = () => {
             </div>
 
             <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-700"
-              >
+              <label className="block text-sm font-medium text-gray-700">
                 Téléphone
               </label>
               <div className="mt-1">
@@ -112,10 +107,7 @@ const ShopCreate = () => {
             </div>
 
             <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-700"
-              >
+              <label className="block text-sm font-medium text-gray-700">
                 Adresse e-mail
               </label>
               <div className="mt-1">
@@ -123,7 +115,6 @@ const ShopCreate = () => {
                   type="email"
                   name="email"
                   autoComplete="email"
-                  required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"

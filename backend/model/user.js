@@ -7,18 +7,18 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please enter your name!"],
   },
+  phoneNumber: {
+    type: Number,
+    required: [true, "Please enter your phone number!"],
+  },
   email: {
     type: String,
-    required: [true, "Please enter your email!"],
   },
   password: {
     type: String,
     required: [true, "Please enter your password"],
     minLength: [4, "Password should be greater than 4 characters"],
     select: false,
-  },
-  phoneNumber: {
-    type: Number,
   },
   addresses: [
     {
