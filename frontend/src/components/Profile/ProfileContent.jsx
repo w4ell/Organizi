@@ -94,7 +94,7 @@ const ProfileContent = ({ active }) => {
                   className="hidden"
                   onChange={handleImage}
                 />
-                <label>
+                <label htmlFor="image">
                   <AiOutlineCamera />
                 </label>
               </div>
@@ -153,7 +153,7 @@ const ProfileContent = ({ active }) => {
               <input
                 className={`w-[250px] h-[40px] border border-[#3a24db] text-center text-[#3a24db] rounded-[3px] mt-8 cursor-pointer`}
                 required
-                value="Update"
+                value="Mise à jour"
                 type="submit"
               />
             </form>
@@ -337,7 +337,7 @@ const ChangePassword = () => {
             <input
               className={`w-[95%] h-[40px] border border-[#3a24db] text-center text-[#3a24db] rounded-[3px] mt-8 cursor-pointer`}
               required
-              value="Update"
+              value="Mise à jour"
               type="submit"
             />
           </div>
